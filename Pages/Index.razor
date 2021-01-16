@@ -1,0 +1,325 @@
+﻿@page "/"
+@inject HttpClient Http
+
+
+<div class="row">
+    <div class="col">
+        <h1 class="applyFade1 text-center text-warning my-4">People from a Long time ago in a Galaxy Far Far away...</h1>
+    </div>
+</div>
+
+<div class="row">
+    @if (starPeople == null)
+    {
+        <div class="col">
+            <p><em>Loading...</em></p>
+        </div>
+    }
+    else
+    {
+
+        <div class="col-3">
+            <table class="table table-dark">
+                @for (int i = 0; i < allPeople.Count - 62; i++)
+                {
+                    string modalName = String.Concat(allPeople[i].name.Where(c => !Char.IsWhiteSpace(c))); //remove whitespace to use names as IDs
+
+                    <tbody>
+                        <!-- Modal -->
+                        <div class="modal fade" id="@modalName" tabindex="-1" role="dialog" aria-labelledby="@modalName" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document" style=" background-color: transparent;">
+                                <div class="modal-content bg-dark">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">@allPeople[i].name Detailed Information</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-dark">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Height:</th>
+                                                    <td>@allPeople[i].height CM</td>
+                                                    <th scope="row">Mass:</th>
+                                                    <td>@allPeople[i].mass KG</td>
+                                                    <th scope="row">Gender:</th>
+                                                    <td>@allPeople[i].gender</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Skin Color:</th>
+                                                    <td>@allPeople[i].skin_color</td>
+                                                    <th scope="row">Eye Color:</th>
+                                                    <td>@allPeople[i].eye_color</td>
+                                                    <th scope="row">Hair Color:</th>
+                                                    <td>@allPeople[i].hair_color</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"></th>
+                                                    <td></td>
+                                                    <th scope="row">Birth Year:</th>
+                                                    <td>@allPeople[i].birth_year</td>
+                                                    <th scope="row"></th>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <tr>
+                            <td class="applyFade2 highlighting border-0 text-center" data-bs-toggle="modal" data-bs-target="#@modalName">@allPeople[i].name</td>
+                        </tr>
+
+                    </tbody>
+                }
+
+            </table>
+        </div>
+
+        <div class="col-3">
+            <table class="table table-dark">
+                @for (int i = 21; i < allPeople.Count - 40; i++)
+                {
+                    string modalName = String.Concat(allPeople[i].name.Where(c => !Char.IsWhiteSpace(c))); //remove whitespace to use names as IDs
+
+                    <tbody>
+                        <!-- Modal -->
+                        <div class="modal fade" id="@modalName" tabindex="-1" role="dialog" aria-labelledby="@modalName" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document" style=" background-color: transparent;">
+                                <div class="modal-content bg-dark">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">@allPeople[i].name Modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-dark">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Height:</th>
+                                                    <td>@allPeople[i].height CM</td>
+                                                    <th scope="row">Mass:</th>
+                                                    <td>@allPeople[i].mass KG</td>
+                                                    <th scope="row">Gender:</th>
+                                                    <td>@allPeople[i].gender</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Skin Color:</th>
+                                                    <td>@allPeople[i].skin_color</td>
+                                                    <th scope="row">Eye Color:</th>
+                                                    <td>@allPeople[i].eye_color</td>
+                                                    <th scope="row">Hair Color:</th>
+                                                    <td>@allPeople[i].hair_color</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"></th>
+                                                    <td></td>
+                                                    <th scope="row">Birth Year:</th>
+                                                    <td>@allPeople[i].birth_year</td>
+                                                    <th scope="row"></th>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <tr>
+                            <td class="applyFade2 highlighting border-0 text-center" data-bs-toggle="modal" data-bs-target="#@modalName">@allPeople[i].name</td>
+                        </tr>
+
+                    </tbody>
+                }
+
+            </table>
+        </div>
+
+        <div class="col-3">
+            <table class="table table-dark">
+                @for (int i = 41; i < allPeople.Count-20; i++)
+                {
+                    string modalName = String.Concat(allPeople[i].name.Where(c => !Char.IsWhiteSpace(c))); //remove whitespace to use names as IDs
+
+                    <tbody>
+                        <!-- Modal -->
+                        <div class="modal fade" id="@modalName" tabindex="-1" role="dialog" aria-labelledby="@modalName" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document" style=" background-color: transparent;">
+                                <div class="modal-content bg-dark">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">@allPeople[i].name Modal</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-dark">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Height:</th>
+                                                    <td>@allPeople[i].height CM</td>
+                                                    <th scope="row">Mass:</th>
+                                                    <td>@allPeople[i].mass KG</td>
+                                                    <th scope="row">Gender:</th>
+                                                    <td>@allPeople[i].gender</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Skin Color:</th>
+                                                    <td>@allPeople[i].skin_color</td>
+                                                    <th scope="row">Eye Color:</th>
+                                                    <td>@allPeople[i].eye_color</td>
+                                                    <th scope="row">Hair Color:</th>
+                                                    <td>@allPeople[i].hair_color</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row"></th>
+                                                    <td></td>
+                                                    <th scope="row">Birth Year:</th>
+                                                    <td>@allPeople[i].birth_year</td>
+                                                    <th scope="row"></th>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <tr>
+                            <td class="applyFade2 highlighting border-0 text-center" data-bs-toggle="modal" data-bs-target="#@modalName">@allPeople[i].name</td>
+                        </tr>
+
+                    </tbody>
+                }
+
+            </table>
+        </div>
+        <div class="col-3">
+            <table class="table table-dark">
+
+                    @for (int i = 62; i < allPeople.Count; i++)
+                    {
+                        string modalName = String.Concat(allPeople[i].name.Where(c => !Char.IsWhiteSpace(c))); //remove whitespace to use names as IDs
+
+                        <tbody>
+                            <!-- Modal -->
+                            <div class="modal fade" id="@modalName" tabindex="-1" role="dialog" aria-labelledby="@modalName" aria-hidden="true">
+                                <div class="modal-dialog modal-lg" role="document" style=" background-color: transparent;">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">@allPeople[i].name Modal</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-dark">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Height:</th>
+                                                        <td>@allPeople[i].height CM</td>
+                                                        <th scope="row">Mass:</th>
+                                                        <td>@allPeople[i].mass KG</td>
+                                                        <th scope="row">Gender:</th>
+                                                        <td>@allPeople[i].gender</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Skin Color:</th>
+                                                        <td>@allPeople[i].skin_color</td>
+                                                        <th scope="row">Eye Color:</th>
+                                                        <td>@allPeople[i].eye_color</td>
+                                                        <th scope="row">Hair Color:</th>
+                                                        <td>@allPeople[i].hair_color</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row"></th>
+                                                        <td></td>
+                                                        <th scope="row">Birth Year:</th>
+                                                        <td>@allPeople[i].birth_year</td>
+                                                        <th scope="row"></th>
+                                                        <td></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <tr>
+                                <td class="applyFade2 highlighting border-0 text-center" data-bs-toggle="modal" data-bs-target="#@modalName">@allPeople[i].name</td>
+                            </tr>
+
+                        </tbody>
+                    }
+
+            </table>
+        </div>
+
+    }
+</div>
+
+    @code {
+        private List<StarWarsPeople> starPeople = new List<StarWarsPeople>();
+        private List<Person> allPeople = new List<Person>();
+        private int totalPersonCount = 0;
+
+        protected override async Task OnInitializedAsync()
+        {
+            var response = await Http.GetStringAsync("https://swapi.dev/api/people/?page=1");
+            Console.WriteLine(response);
+
+            string jsonString = await Http.GetStringAsync("https://swapi.dev/api/people/?page=1");
+            starPeople.Add(JsonSerializer.Deserialize<StarWarsPeople>(jsonString));
+            Console.WriteLine(starPeople[0].count);
+            Console.WriteLine(starPeople[0].next);
+            Console.WriteLine(starPeople[0].results[0].name);
+
+            Console.WriteLine("List Size: " + starPeople.Count);
+
+            int pageNum = 2;
+            int init = 0;
+            string uri = "https://swapi.dev/api/people/?page=";
+            while (!String.IsNullOrEmpty(starPeople[init].next))
+            {
+                Console.WriteLine("There's nothing left!");
+                jsonString = await Http.GetStringAsync(uri + pageNum);
+                starPeople.Add(JsonSerializer.Deserialize<StarWarsPeople>(jsonString));
+                init += 1;
+                pageNum += 1;
+            }
+
+            Console.WriteLine("List Size: " + starPeople.Count);
+
+
+            //Compiling all people into a single data source reduces complexity required to display in neat HTML/Bootstrap groups
+            foreach(var person in starPeople)
+            {
+                foreach(var result in person.results)
+                {
+                    allPeople.Add(result);
+                }
+            }
+        }
+
+        public class StarWarsPeople
+        {
+            public int count { get; set; }
+            public string next { get; set; }
+            public List<Person> results { get; set; }
+        }
+
+        public class Person
+        {
+            public string name { get; set; }
+            public string height { get; set; }
+            public string mass { get; set; }
+            public string hair_color { get; set; }
+            public string skin_color { get; set; }
+            public string eye_color { get; set; }
+            public string birth_year { get; set; }
+            public string gender { get; set; }
+        }
+    }
